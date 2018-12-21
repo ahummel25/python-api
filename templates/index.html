@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Flask site</title>
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1 id="header">Welcome!</h1>
+        <div>
+            <button type="button" onclick="callPyApi()">Show SQL Data</button>
+            <hr />
+            <a href="{{ url_for('main') }}">Back to Homepage</a>
+            <hr />
+        </div>
+        <div id="show-data"></div>
+        <script>
+            function callPyApi() {
+              document.getElementById("header").innerHTML = "Listing results";
+              $.getJSON('http://localhost/list', { id: 123 },
+                    (data, textStatus, jqXHR) => {
+                        $('#show-data').append(JSON.stringify(data))
+                    }
+                )
+            }
+        </script>
+    </body>
+</html>
