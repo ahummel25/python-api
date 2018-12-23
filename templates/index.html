@@ -16,7 +16,7 @@
         <script>
             function callPyApi() {
               document.getElementById("header").innerHTML = "Listing results";
-              $.getJSON('http://localhost/list', { id: 123 },
+              $.getJSON('http://localhost/list', { id: [123, 124] },
                     (data, textStatus, jqXHR) => {
                         $('#show-data').append(JSON.stringify(data))
                     }
